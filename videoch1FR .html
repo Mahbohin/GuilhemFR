@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Château - Bienvenue</title>
     <style>
+        /* Force le plein écran noir complet */
         body, html { 
             margin: 0; 
             padding: 0; 
@@ -17,6 +18,7 @@
             align-items: center;
         }
 
+        /* Conteneur pour gérer la superposition */
         .video-container {
             position: relative;
             width: 100vw;
@@ -26,30 +28,33 @@
             align-items: center;
         }
 
+        /* La vidéo s'adapte parfaitement */
         video { 
             width: 100%; 
             height: 100%; 
             object-fit: contain; 
         }
 
+        /* Styles pour l'overlay de texte/bouton (apparaît AVANT le play) */
         .video-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); 
+            background-color: rgba(0, 0, 0, 0.7); /* Fond noir semi-transparent */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             color: white;
             font-family: sans-serif;
-            z-index: 10; 
-            cursor: pointer; 
-            transition: opacity 0.5s ease; 
+            z-index: 10; /* Assure que le texte est au-dessus */
+            cursor: pointer; /* Indique que c'est cliquable */
+            transition: opacity 0.5s ease; /* Animation de disparition */
         }
 
+        /* Icône de Play */
         .play-icon {
             width: 80px;
             height: 80px;
@@ -69,6 +74,7 @@
             margin-left: 5px;
         }
 
+        /* Texte d'instruction */
         .instruction-text {
             font-size: 1.2rem;
             font-weight: bold;
@@ -77,35 +83,39 @@
             max-width: 80%;
         }
 
+        /* Classe pour cacher l'overlay une fois le play activé */
         .video-overlay.hidden {
             opacity: 0;
-            pointer-events: none; 
+            pointer-events: none; /* Désactive les clics sur l'overlay caché */
         }
     </style>
 </head>
 <body>
 
     <div class="video-container">
+        <!-- L'overlay avec le texte et l'icône Play -->
         <div id="videoOverlay" class="video-overlay" onclick="playVideo()">
             <div class="play-icon"></div>
-            <div class="instruction-text">APPUYEZ SUR PLAY ET TOURNEZ L’ÉCRAN HORIZONTALEMENT</div>
+            <div class="instruction-text">APPUYEZ SUR PLAY ET TOURNEZ L’ECRAN HORIZONTALEMENT</div>
         </div>
 
+        <!-- Le lecteur vidéo -->
         <video id="myVideo" controls playsinline preload="auto">
-            <source src="https://filedn.eu/l6KtiAI390E7C3a3hKQgTcj/internet%20parcours%20chateau%20FR%201080%20P/1%20bienvenue-1_1.mp4" type="video/mp4"> 
+            <source src="https://filedn.eu/l6KtiAI390E7C3a3hKQgTcj/internet%20parcours%20chateau%20FR%201080%20P/1%20bienvenue-1_1.mp4"> 
             Votre navigateur ne supporte pas la lecture de cette vidéo.
         </video>
     </div>
 
     <script>
+        // Fonction JavaScript pour lancer la vidéo et cacher l'overlay
         function playVideo() {
             var video = document.getElementById("myVideo");
             var overlay = document.getElementById("videoOverlay");
             
+            // Masquer l'overlay
             overlay.classList.add("hidden");
+            
+            // Lancer la vidéo
             video.play();
         }
     </script>
-
-</body>
-</html>
